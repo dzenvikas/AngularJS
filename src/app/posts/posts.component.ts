@@ -15,9 +15,14 @@ export class PostsComponent implements OnInit{
 
   ngOnInit(){
     this.service.getPost()
-      .subscribe(response => {
+      .subscribe(
+        response => {
         this.posts = response.json();
-      });
+        },
+        error => {
+          alert('An unexpected error occured.');
+          console.log(error);
+        });
   }
 
   createPost(input: HTMLInputElement){
@@ -25,17 +30,34 @@ export class PostsComponent implements OnInit{
     input.value = '';
 
     this.service.createPost(post)
-      .subscribe(res => {
-        post['id'] = res.json().id;
-        this.posts.splice(0, 0, post);
-        console.log(res.json());
-      });
+      .subscribe(
+        res => {
+          post['id'] = res.json().id;
+          this.posts.splice(0, 0, post);
+          console.log(res.json());
+        },
+        (error: Response) => {
+          if (error.status === 400) {
+            // this.form.setErrors(error.json());
+          }
+          else {
+            alert('An unexpected error occured.');
+            console.log(error);
+          }
+        });
   }
   deletePost(post){
-    this.service.deletePost(post.id)
-      .subscribe(respons => {
-        let index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-      })
+    this.service.deletePost(345)
+      .subscribe(
+        response => {
+          let index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+        },
+        (error: Response) => {
+          if (error.status === 404)
+            alert('This post has already been deleted.');
+          alert('An unexpected error occured.');
+          console.log(error);
+        });
   }
 }
