@@ -10,6 +10,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { PostsComponent } from './posts/posts.component';
 import { HttpModule } from '@angular/http';
 import { PostService } from './services/post.service';
+import { InputFormatDirective } from './directives/input-format.directive';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PostService } from './services/post.service';
     CoursesComponent,
     SummaryPipe,
     FavoriteComponent,
-    PostsComponent
+    PostsComponent,
+    InputFormatDirective,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
