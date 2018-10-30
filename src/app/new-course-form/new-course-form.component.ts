@@ -25,23 +25,16 @@ export class NewCourseFormComponent {
   //   return this.form.get('topics') as FormArray;
   // }
 
-  form = new FormGroup({
-    name: new FormControl('', Validators.required),
-    contact: new FormGroup({
-      email: new FormControl(),
-      phone: new FormControl()
-    }),
-    topics: new FormArray([])
-  });
+  form;
 
   constructor(formBuilder: FormBuilder) {
-    formBuilder.group({
+    this.form = formBuilder.group({
       name: ['', Validators.required],
       contact: formBuilder.group({
         email: [],
         phone: []
       }),
       topics: formBuilder.array([])
-    })
+    });
   }
 }
