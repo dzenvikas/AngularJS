@@ -13,6 +13,7 @@ import { PostService } from './services/post.service';
 import { InputFormatDirective } from './directives/input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     PostsComponent,
     InputFormatDirective,
     ContactFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    NewCourseFormComponent
   ],
   imports: [
     BrowserModule,
