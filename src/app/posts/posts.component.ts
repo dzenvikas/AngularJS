@@ -54,8 +54,9 @@ export class PostsComponent implements OnInit{
           this.posts.splice(index, 1);
         },
         (error: Response) => {
-          if (error.status === 404)
+          if (error.status === 404) {
             alert('This post has already been deleted.');
+          }
           alert('An unexpected error occured.');
           console.log(error);
         });
